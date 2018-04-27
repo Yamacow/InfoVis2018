@@ -22,7 +22,14 @@ function main()
     document.body.appendChild( renderer.domElement );
 
     var geometry = new THREE.TorusKnotGeometry( 1, 0.3, 100, 20 );
-    var material = new THREE.MeshLambertMaterial();
+    var material = new THREE.ShaderMaterial({
+        vertexColors: THREE.VertexColors,
+        vertexShader: document.getElementById('phong.vert').text,
+        fragmentShader: document.getElementById('phong.frag').text,
+        uniforms: {
+            light_position: { type: 'v3', value: light.position } 
+        }
+    });
 
     var torus_knot = new THREE.Mesh( geometry, material );
     scene.add( torus_knot );

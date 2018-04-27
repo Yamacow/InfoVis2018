@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>W06: Example 02</title>
+	<title>W06: Task 01</title>
 </head>
 <body>
 	<script src="https://threejs.org/build/three.min.js"></script>
@@ -56,7 +56,7 @@
 		varying vec3 normal_vector;
 		uniform vec3 light_position;
 
-		vec3 PhongReflection( vec3 C, vec3 L, vec3 N ) {
+		vec3 PhongReflection( vec3 C, vec3 L, vec3 N, vec3 V ) {
 		    float ka = 0.3;
 		    float kd = 0.5;
 		    float ks = 0.8;
@@ -79,7 +79,8 @@
 			vec3 C = color;
 			vec3 L = normalize( light_position - point_position.xyz );
 			vec3 N = normalize( normal_vector );
-			point_color = PhongReflection( C, L, N );
+			vec3 V = normalize( cameraPosition - point_position.xyz );
+			point_color = PhongReflection( C, L, N, V );
 			gl_Position = projectionMatrix * point_position;
 		} 
 	</script>
