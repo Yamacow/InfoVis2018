@@ -88,9 +88,9 @@ function main()
     for ( var i = 0; i < nfaces; i++ )
     {
         var id = faces[i];
-        var S0 = parseInt((scalars[ id[0] ] - minS) * 255 / (maxS - minS)); // normalization
-        var S1 = parseInt((scalars[ id[1] ] - minS) * 255 / (maxS - minS));
-        var S2 = parseInt((scalars[ id[2] ] - minS) * 255 / (maxS - minS));
+        var S0 = parseInt(Math.round((scalars[ id[0] ] - minS) * 255 / (maxS - minS))); // normalization
+        var S1 = parseInt(Math.round((scalars[ id[1] ] - minS) * 255 / (maxS - minS)));
+        var S2 = parseInt(Math.round((scalars[ id[2] ] - minS) * 255 / (maxS - minS)));
         var C0 = new THREE.Color().setHex( cmap[ S0 ][1] );
         var C1 = new THREE.Color().setHex( cmap[ S1 ][1] );
         var C2 = new THREE.Color().setHex( cmap[ S2 ][1] );
